@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "author": "Kazumasa Hirata <sheepu.tech@gmail.com>",
+  "name": "Albatrosstoi | Font Modifier",
+  "short_name": "gcext-modfont",
+  "version": "0.0.1",
+  "description": "gcext-modfont allows you to browse any website with your favorite font.",
+  "permissions": ["fontSettings", "storage", "tabs"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/js/content-script.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "src/html/popup.html",
+    "default_title": "Font Modifier"
+  }
+}
