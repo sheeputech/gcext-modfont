@@ -30,23 +30,24 @@ class SelectedFonts {
         this.fonts = this.fonts.filter(f => f !== this.getFontNameFromRemoveId(fontRemoveId))
 
         const fontId = this.getFontIdFromRemoveId(fontRemoveId)
+
         this.area.removeChild(document.getElementById(fontId))
     }
 
     // Utils
     getFontId(fontName) {
-        return fontName.split(' ').join('-')
+        return fontName.split(' ').join('_')
     }
     getFontRemoveId(fontName) {
-        return `${this.getFontId(fontName)}_remove`
+        return `${this.getFontId(fontName)}.remove`
     }
     getFontIdFromRemoveId(fontRemoveId) {
-        return fontRemoveId.split('_')[0]
+        return fontRemoveId.split('.')[0]
     }
     getFontNameFromRemoveId(fontRemoveId) {
         return fontRemoveId
-            .split('_')[0]
-            .split('-')
+            .split('.')[0]
+            .split('_')
             .join(' ')
     }
 }
@@ -87,9 +88,9 @@ chrome.fontSettings.getFontList(localFonts => {
                 chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
                     chrome.tabs.sendMessage(tabs[0].id, { type: 'update' }, response => {
                         if (response.isSuccess) {
-                            alert('Fonts successfully modified')
+                            console.info('Fonts successfully modified')
                         } else {
-                            alert('Font change failed.')
+                            console.error('Font change failed.')
                         }
                         window.close()
                     })
