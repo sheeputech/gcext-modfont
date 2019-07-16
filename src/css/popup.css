@@ -1,3 +1,6 @@
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "/node_modules/open-iconic/font/css/open-iconic-bootstrap.min.css";
+
 body {
   width: 400px;
   height: max-content;

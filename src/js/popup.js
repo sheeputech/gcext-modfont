@@ -1,4 +1,8 @@
-class SelectedFonts {
+import '../../node_modules/jquery/dist/jquery.min.js'
+import '../../node_modules/popper.js/dist/popper.js'
+import '../../node_modules/bootstrap/dist/js/bootstrap.js'
+
+export class SelectedFontArea {
     constructor(area) {
         this.area = area
         this.fonts = []
@@ -52,7 +56,7 @@ class SelectedFonts {
     }
 }
 
-const selection = new SelectedFonts(document.getElementById('selectedFonts'))
+const selection = new SelectedFontArea(document.getElementById('selectedFontArea'))
 const fontSelector = document.getElementById('fontSelector')
 
 const firstOption = document.createElement('option')
